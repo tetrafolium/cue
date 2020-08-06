@@ -226,7 +226,7 @@ func convertRec(ctx *adt.OpContext, nilIsTop bool, x interface{}) adt.Value {
 		if ii, iv := internal.CoreValue(x); ii != nil {
 			i := ii.(*runtime.Index)
 			v := iv.(*adt.Vertex)
-			// TODO: panic if nto the same runtime.
+			// TODO: panic if not the same runtime.
 			_ = i
 			return v
 		}

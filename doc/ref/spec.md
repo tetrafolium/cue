@@ -1338,7 +1338,7 @@ A field is _hidden_ if its starts with a `_`.
 Definitions and hidden fields are not emitted when converting a CUE program
 to data and are never required to be concrete.
 
-Referencing a definition will implicitely [close](#ClosedStructs) it.
+Referencing a definition will implicitly [close](#ClosedStructs) it.
 A struct that embeds a referenced definition will itself be closed
 after first allowing any other fields or embedded structs to unify.
 The result of `{ #A }` is `#A` for any `#A`.

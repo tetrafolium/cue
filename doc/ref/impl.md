@@ -322,7 +322,7 @@ will ensure this produces identical results.
 
 ### References
 
-A distinguising feature of CUE's unification algorithm is the use of references.
+A distinguishing feature of CUE's unification algorithm is the use of references.
 In conventional graph unification for typed feature structures, the structures
 that are unified into the existing graph are independent and pre-evaluated.
 In CUE, the typed feature structures indicated by references may still need to
