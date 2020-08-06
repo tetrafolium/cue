@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /*
-  block comment
+block comment
 */
 package pkg1
 

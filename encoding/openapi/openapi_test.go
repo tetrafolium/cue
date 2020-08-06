@@ -32,7 +32,7 @@ import (
 	"cuelang.org/go/encoding/openapi"
 )
 
-var update *bool = flag.Bool("update", false, "update the test output")
+var update = flag.Bool("update", false, "update the test output")
 
 func TestParseDefinitions(t *testing.T) {
 	info := *(*openapi.OrderedMap)(ast.NewStruct(
