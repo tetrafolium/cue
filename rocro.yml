@@ -60,4 +60,4 @@ inspecode:
         - '**/*_test.go'
         - 'internal/third_party/yaml/*.go'
       options: [--single-occurrence]
-      thresholds: {num-issues: 274}
+      thresholds: {num-issues: 36}
