@@ -8,51 +8,51 @@ inspecode:
   tools:
 
     cpd:
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
 
     errcheck:
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
 
     fossology:
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
 
     go-test:
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
 
     go-vet:
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
 
     gofmt:
       auto-fix: true
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
 
     goimports:
       auto-fix: true
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
 
     golint:
       auto-fix: true
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
 
     gosec:
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
 
     grep:
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
 
     ineffassign:
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
 
     jscpd:
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
 
     misspell:
       auto-fix: true
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
 
     staticcheck:
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
 
     unused:
       options: [--single-occurrence]
-      thresholds: {num-issue: 999}
+      thresholds: {num-issues: 999}
