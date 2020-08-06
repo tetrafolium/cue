@@ -34,7 +34,7 @@ inspecode:
       ignore:
         - 'internal/third_party/yaml/*.go'
       auto-fix: true
-      thresholds: {num-issues: 867}
+      thresholds: {num-issues: 405}
 
     gosec:
       thresholds: {num-issues: 93}
