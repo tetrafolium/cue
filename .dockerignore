@@ -13,3 +13,8 @@
 # not ignore go module files
 !go.mod
 !go.sum
+
+# local additions to check by inspecode linters
+!rocro*
+!*Dockerfile*
+!*.go
