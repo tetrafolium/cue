@@ -31,6 +31,9 @@ WORKDIR "${REPODIR}"
 RUN ( find . -name '*Dockerfile*' | \
       xargs hadolint --format json > "${OUTDIR}/hadolint.json" ) || true
 RUN ls -la "${OUTDIR}"
+RUN echo '----------' && \
+    cat "${OUTDIR}/hadolint.json" && \
+    echo '----------'
 
 ### Convert hadolint JSON to SARIF ...
 RUN go run "${TOOLDIR}/hadolint/cmd/main.go" \
