@@ -14,6 +14,8 @@ inspecode:
       artifacts:
       - from: hadolint-task
         path: "/.reports/hadolint.json"
+      - from: hadolint-task
+        path: "/.reports/hadolint.sarif"
       reports:
       - from: hadolint-task
         path: "/.reports/hadolint.sarif"
@@ -29,6 +31,8 @@ inspecode:
       artifacts:
       - from: yamllint-task
         path: "/.reports/yamllint.issues"
+      - from: yamllint-task
+        path: "/.reports/yamllint.sarif"
       reports:
       - from: yamllint-task
         path: "/.reports/yamllint.sarif"
