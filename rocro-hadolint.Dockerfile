@@ -29,8 +29,6 @@ WORKDIR "${REPODIR}"
 
 ### Run hadolint ...
 RUN echo "+++ $(hadolint --version)"
-RUN ls -la .
-RUN echo +++ ./*Dockerfile* +++
 RUN ( echo '----------' ; find . -type f -name '*Dockerfile*' ; echo '----------' )
 RUN ( find . -type f -name '*Dockerfile*' | \
       xargs hadolint --format json > "${OUTDIR}/hadolint.json" ) || true
