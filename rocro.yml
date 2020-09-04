@@ -20,7 +20,11 @@ inspecode:
       - from: hadolint-task
         path: "/.reports/hadolint.sarif"
       machine: {cpu: 0.75}
+<<<<<<< HEAD
       thresholds: {num-issues: 999}
+=======
+      thresholds: {num-issues: 11}
+>>>>>>> inspecode
 
     - name: yamllint
       type: docker-build
@@ -37,6 +41,35 @@ inspecode:
       - from: yamllint-task
         path: "/.reports/yamllint.sarif"
       machine: {cpu: 0.75}
+<<<<<<< HEAD
       thresholds: {num-issues: 999}
+=======
+      thresholds: {num-issues: 4}
+
+  tools:
+
+    cpd:
+      thresholds: {num-issues: 31}
+
+    errcheck:
+      thresholds: {num-issues: 115}
+
+    fossology:
+      thresholds: {num-issues: 23}
+
+    go-test:
+      thresholds: {num-issues: 0}
+
+    go-vet:
+      thresholds: {num-issues: 4}
+
+    gofmt:
+      auto-fix: true
+      thresholds: {num-issues: 0}
+
+    goimports:
+      auto-fix: true
+      thresholds: {num-issues: 0}
+>>>>>>> inspecode
 
   tools:
