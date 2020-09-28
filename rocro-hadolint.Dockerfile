@@ -34,7 +34,7 @@ RUN ( find . -type f -name '*Dockerfile*' | \
 RUN ls -la "${OUTDIR}"
 
 ### Convert hadolint JSON to SARIF ...
-RUN go run "${TOOLDIR}/hadolint/cmd/main.go" \
+RUN go run "${TOOLDIR}/hadolint/cmd/main.go" "${REPOPATH}" \
         < "${OUTDIR}/hadolint.json" \
         > "${OUTDIR}/hadolint.sarif"
 RUN ls -la "${OUTDIR}"

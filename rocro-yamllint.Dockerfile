@@ -32,7 +32,7 @@ RUN yamllint -f parsable . > "${OUTDIR}/yamllint.issues" || true
 RUN ls -la "${OUTDIR}"
 
 ### Convert yamllint issues to SARIF ...
-RUN go run "${TOOLDIR}/yamllint/cmd/main.go" \
+RUN go run "${TOOLDIR}/yamllint/cmd/main.go" "${REPOPATH}" \
         < "${OUTDIR}/yamllint.issues" \
         > "${OUTDIR}/yamllint.sarif"
 RUN ls -la "${OUTDIR}"
