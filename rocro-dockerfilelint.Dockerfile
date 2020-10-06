@@ -2,7 +2,7 @@ FROM node:lts-alpine AS dockerfilelint-task
 
 ### Install golang ...
 RUN apk add --update --no-cache git go && \
-    echo "+++ $(git version)"
+    echo "+++ $(git version)" && \
     echo "+++ $(go version)"
 
 ENV GOBIN="$GOROOT/bin" \
