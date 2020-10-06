@@ -33,6 +33,7 @@ RUN ( find . -type f -name '*Dockerfile*' -print0 | xargs -0 dockerfilelint --ou
 RUN ls -la "${OUTDIR}"
 
 ### Convert dockerfilelint JSON to SARIF ...
+RUN ls -l "${TOOLDIR}/dockerfilelint/cmd/main.go"
 RUN go run "${TOOLDIR}/dockerfilelint/cmd/main.go" "${REPOPATH}" \
         < "${OUTDIR}/dockerfilelint.json" \
         > "${OUTDIR}/dockerfilelint.sarif"
