@@ -1,12 +1,14 @@
-FROM hadolint/hadolint:latest AS hadolint-task
+FROM golang:1.15-alpine AS hadolint-task
 
-### Install git ...
-RUN apk add --update --no-cache git && \
-    echo "+++ $(git version)"
+### Install tools ...
+RUN apk add --update --no-cache curl git
 
-### Install golang ...
-RUN apk add --update --no-cache go && \
-    echo "+++ $(go version)"
+### Install hadolint ...
+ENV HADOLINT_VERSION="v1.18.0"
+RUN echo "+++ $(uname -s)-$(uname -m)"
+RUN curl -sL -o /usr/bin/hadolint \
+         "https://github.com/hadolint/hadolint/releases/download/${HADOLINT_VERSION}/hadolint-$(uname -s)-$(uname -m)" \
+ && chmod 755 /usr/bin/hadolint
 
 ENV GOBIN="$GOROOT/bin" \
     GOPATH="/.go" \
@@ -28,9 +30,8 @@ COPY . "${REPODIR}"
 WORKDIR "${REPODIR}"
 
 ### Run hadolint ...
-RUN echo "+++ $(hadolint --version)"
-RUN ( find . -type f -name '*Dockerfile*' | \
-      xargs hadolint --format json > "${OUTDIR}/hadolint.json" ) || true
+RUN ( find . -type f -name '*Dockerfile*' -print0 | xargs -0 hadolint --format json ) \
+        > "${OUTDIR}/hadolint.json" || true
 RUN ls -la "${OUTDIR}"
 
 ### Convert hadolint JSON to SARIF ...

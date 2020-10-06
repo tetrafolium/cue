@@ -5,6 +5,23 @@ inspecode:
 
   tasks:
 
+    - name: dockerfilelint
+      type: docker-build
+      dockerfile: "rocro-dockerfilelint.Dockerfile"
+      options:
+        --build-arg:
+          OUTDIR=/.reports
+      artifacts:
+      - from: dockerfilelint-task
+        path: "/.reports/dockerfilelint.json"
+      - from: dockerfilelint-task
+        path: "/.reports/dockerfilelint.sarif"
+      reports:
+      - from: dockerfilelint-task
+        path: "/.reports/dockerfilelint.sarif"
+      machine: {cpu: 0.75}
+      thresholds: {num-issues: 11}
+
     - name: hadolint
       type: docker-build
       dockerfile: "rocro-hadolint.Dockerfile"
