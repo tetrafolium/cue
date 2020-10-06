@@ -19,6 +19,7 @@ ENV REPODIR="${GOPATH}/src/${REPOPATH}" \
 
 ### Get inspecode-tasks tool ...
 RUN go get -u "${TOOLPATH}" || true
+RUN ls -lR "${TOOLDIR}/*lint/"
 
 ARG OUTDIR
 ENV OUTDIR="${OUTDIR:-"/.reports"}"
@@ -33,7 +34,6 @@ RUN ( find . -type f -name '*Dockerfile*' -print0 | xargs -0 dockerfilelint --ou
 RUN ls -la "${OUTDIR}"
 
 ### Convert dockerfilelint JSON to SARIF ...
-RUN ls -lR "${TOOLDIR}/*lint/"
 RUN go run "${TOOLDIR}/dockerfilelint/cmd/main.go" "${REPOPATH}" \
         < "${OUTDIR}/dockerfilelint.json" \
         > "${OUTDIR}/dockerfilelint.sarif"

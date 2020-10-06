@@ -19,6 +19,7 @@ ENV REPODIR="${GOPATH}/src/${REPOPATH}" \
 
 ### Get inspecode-tasks tool ...
 RUN go get -u "${TOOLPATH}" || true
+RUN ls -lR "${TOOLDIR}/*lint/"
 
 ARG OUTDIR
 ENV OUTDIR="${OUTDIR:-"/.reports"}"
