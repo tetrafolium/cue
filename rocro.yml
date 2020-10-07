@@ -42,7 +42,7 @@ inspecode:
       machine: {cpu: 0.75}
       thresholds: {num-issues: 12}
 
-    - name: yamllint
+    - name: yamllint_SARIF
       type: docker-build
       dockerfile: "rocro-yamllint.Dockerfile"
       options:
@@ -60,6 +60,24 @@ inspecode:
           type: SARIF
           path: README.md  # duumy ... no-needed when `type: SARIF`
       machine: {cpu: 0.75}
-      thresholds: {num-issues: 6}
+      thresholds: {num-issues: 8}
+
+    - name: yamllint_example
+      type: docker-build
+      dockerfile: "rocro-yamllint.Dockerfile"
+      options:
+        --build-arg:
+          OUTDIR=/.reports
+      artifacts:
+      - from: yamllint-task
+        path: "/.reports/yamllint.issues"
+      reports:
+      - from: yamllint-task
+        path: "/.reports/yamllint.issues"
+        format:
+          type: example
+          path: rocro-tasks-examples/yamllint.issues
+      machine: {cpu: 0.75}
+      thresholds: {num-issues: 8}
 
   tools:
