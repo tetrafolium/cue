@@ -19,6 +19,7 @@ inspecode:
       reports:
       - from: dockerfilelint-task
         path: "/.reports/dockerfilelint.sarif"
+        format: SARIF
       machine: {cpu: 0.75}
       thresholds: {num-issues: 2}
 
@@ -36,6 +37,8 @@ inspecode:
       reports:
       - from: hadolint-task
         path: "/.reports/hadolint.sarif"
+        format:
+          type: SARIF
       machine: {cpu: 0.75}
       thresholds: {num-issues: 12}
 
@@ -53,6 +56,9 @@ inspecode:
       reports:
       - from: yamllint-task
         path: "/.reports/yamllint.sarif"
+        format:
+          type: SARIF
+          path: README.md  # duumy ... no-needed when `type: SARIF`
       machine: {cpu: 0.75}
       thresholds: {num-issues: 6}
 
