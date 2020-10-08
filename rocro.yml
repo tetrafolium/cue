@@ -70,6 +70,8 @@ inspecode:
       artifacts:
       - from: yamllint-task
         path: "/.reports/yamllint.issues"
+      - from: yamllint-task
+        path: "/.reports/yamllint.sarif"
       reports:
       - from: yamllint-task
         path: "/.reports/yamllint.issues"
