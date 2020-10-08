@@ -1,4 +1,3 @@
----
 inspecode:
 
   global:
@@ -60,7 +59,7 @@ inspecode:
     #       type: SARIF
     #       path: README.md  # duumy ... no-needed when `type: SARIF`
     #   machine: {cpu: 0.75}
-    #   thresholds: {num-issues: 8}
+    #   thresholds: {num-issues: 9}
 
     - name: yamllint_example
       type: docker-build
@@ -78,6 +77,6 @@ inspecode:
           type: example
           path: rocro-tasks-examples/yamllint.issues
       machine: {cpu: 0.75}
-      thresholds: {num-issues: 8}
+      thresholds: {num-issues: 7}
 
   tools:
