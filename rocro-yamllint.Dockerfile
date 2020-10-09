@@ -1,4 +1,4 @@
-FROM python:3-alpine3.11 AS yamllint-task
+FROM python:3-alpine AS yamllint-task
 
 ### Install golang ...
 RUN apk add --update --no-cache go && \
