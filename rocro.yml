@@ -40,6 +40,25 @@ inspecode:
             type: SARIF
       thresholds: {num-issues: 12}
 
+    - name: yamllint_example
+      type: docker-build
+      dockerfile: "rocro-yamllint.Dockerfile"
+      options:
+        --build-arg:
+          OUTDIR=/.reports
+      artifacts:
+        - from: yamllint-task
+          path: "/.reports/yamllint.issues"
+        - from: yamllint-task
+          path: "/.reports/yamllint.sarif"
+      reports:
+        - from: yamllint-task
+          path: "/.reports/yamllint.issues"
+          format:
+            type: example
+            path: rocro-tasks-examples/yamllint.issues
+      thresholds: {num-issues: 0}
+
     - name: yamllint_SARIF
       type: docker-build
       dockerfile: "rocro-yamllint.Dockerfile"
@@ -57,25 +76,6 @@ inspecode:
           format:
             type: SARIF
             path: README.md  # duumy ... no-needed when `type: SARIF`
-      thresholds: {num-issues: 0}
-
-    - name: yamllint_example
-      type: docker-build
-      dockerfile: "rocro-yamllint.Dockerfile"
-      options:
-        --build-arg:
-          OUTDIR=/.reports
-      artifacts:
-      - from: yamllint-task
-        path: "/.reports/yamllint.issues"
-      - from: yamllint-task
-        path: "/.reports/yamllint.sarif"
-      reports:
-      - from: yamllint-task
-        path: "/.reports/yamllint.issues"
-        format:
-          type: example
-          path: rocro-tasks-examples/yamllint.issues
       thresholds: {num-issues: 0}
 
   tools:
