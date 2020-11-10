@@ -1,3 +1,4 @@
+---
 inspecode:
 
   global:
@@ -11,15 +12,14 @@ inspecode:
         --build-arg:
           OUTDIR=/.reports
       artifacts:
-      - from: dockerfilelint-task
-        path: "/.reports/dockerfilelint.json"
-      - from: dockerfilelint-task
-        path: "/.reports/dockerfilelint.sarif"
+        - from: dockerfilelint-task
+          path: "/.reports/dockerfilelint.json"
+        - from: dockerfilelint-task
+          path: "/.reports/dockerfilelint.sarif"
       reports:
-      - from: dockerfilelint-task
-        path: "/.reports/dockerfilelint.sarif"
-        format: SARIF
-      machine: {cpu: 0.75}
+        - from: dockerfilelint-task
+          path: "/.reports/dockerfilelint.sarif"
+          format: SARIF
       thresholds: {num-issues: 2}
 
     - name: hadolint
@@ -29,37 +29,35 @@ inspecode:
         --build-arg:
           OUTDIR=/.reports
       artifacts:
-      - from: hadolint-task
-        path: "/.reports/hadolint.json"
-      - from: hadolint-task
-        path: "/.reports/hadolint.sarif"
+        - from: hadolint-task
+          path: "/.reports/hadolint.json"
+        - from: hadolint-task
+          path: "/.reports/hadolint.sarif"
       reports:
-      - from: hadolint-task
-        path: "/.reports/hadolint.sarif"
-        format:
-          type: SARIF
-      machine: {cpu: 0.75}
+        - from: hadolint-task
+          path: "/.reports/hadolint.sarif"
+          format:
+            type: SARIF
       thresholds: {num-issues: 12}
 
-    # - name: yamllint_SARIF
-    #   type: docker-build
-    #   dockerfile: "rocro-yamllint.Dockerfile"
-    #   options:
-    #     --build-arg:
-    #       OUTDIR=/.reports
-    #   artifacts:
-    #   - from: yamllint-task
-    #     path: "/.reports/yamllint.issues"
-    #   - from: yamllint-task
-    #     path: "/.reports/yamllint.sarif"
-    #   reports:
-    #   - from: yamllint-task
-    #     path: "/.reports/yamllint.sarif"
-    #     format:
-    #       type: SARIF
-    #       path: README.md  # duumy ... no-needed when `type: SARIF`
-    #   machine: {cpu: 0.75}
-    #   thresholds: {num-issues: 9}
+    - name: yamllint_SARIF
+      type: docker-build
+      dockerfile: "rocro-yamllint.Dockerfile"
+      options:
+        --build-arg:
+          OUTDIR=/.reports
+      artifacts:
+        - from: yamllint-task
+          path: "/.reports/yamllint.issues"
+        - from: yamllint-task
+          path: "/.reports/yamllint.sarif"
+      reports:
+        - from: yamllint-task
+          path: "/.reports/yamllint.sarif"
+          format:
+            type: SARIF
+            path: README.md  # duumy ... no-needed when `type: SARIF`
+      thresholds: {num-issues: 0}
 
     - name: yamllint_example
       type: docker-build
@@ -78,7 +76,6 @@ inspecode:
         format:
           type: example
           path: rocro-tasks-examples/yamllint.issues
-      machine: {cpu: 0.75}
-      thresholds: {num-issues: 7}
+      thresholds: {num-issues: 0}
 
   tools:
