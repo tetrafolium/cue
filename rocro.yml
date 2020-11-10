@@ -57,7 +57,7 @@ inspecode:
           format:
             type: example
             path: rocro-tasks-examples/yamllint.issues
-      thresholds: {num-issues: 4}
+      thresholds: {num-issues: 0}
 
     - name: yamllint_SARIF
       type: docker-build
@@ -76,7 +76,7 @@ inspecode:
           format:
             type: SARIF
             path: README.md  # duumy ... no-needed when `type: SARIF`
-      thresholds: {num-issues: 4}
+      thresholds: {num-issues: 0}
 
   tools:
 
@@ -110,7 +110,7 @@ inspecode:
       thresholds: {num-issues: 405}
 
     gosec:
-      thresholds: {num-issues: 93}
+      thresholds: {num-issues: 74}
 
     grep:
       thresholds: {num-issues: 647}
