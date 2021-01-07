@@ -3,96 +3,18 @@ inspecode:
 
   global:
     runtime:
-      go: 1.12
+      # go: 1.12
 
   experimental:
     env:
-      GO111MODULE: auto
+      # GO111MODULE: auto
 
   tasks:
 
-    - name: dockerfilelint
-      type: docker-build
-      dockerfile: "rocro-dockerfilelint.Dockerfile"
-      options:
-        --build-arg:
-          OUTDIR=/.reports
-      artifacts:
-        - from: dockerfilelint-task
-          path: "/.reports/dockerfilelint.json"
-        - from: dockerfilelint-task
-          path: "/.reports/dockerfilelint.sarif"
-      reports:
-        - from: dockerfilelint-task
-          path: "/.reports/dockerfilelint.sarif"
-          format: SARIF
-      thresholds: {num-issues: 2}
-
-    - name: hadolint
-      type: docker-build
-      dockerfile: "rocro-hadolint.Dockerfile"
-      options:
-        --build-arg:
-          OUTDIR=/.reports
-      artifacts:
-        - from: hadolint-task
-          path: "/.reports/hadolint.json"
-        - from: hadolint-task
-          path: "/.reports/hadolint.sarif"
-      reports:
-        - from: hadolint-task
-          path: "/.reports/hadolint.sarif"
-          format:
-            type: SARIF
-      thresholds: {num-issues: 12}
-
-    - name: yamllint_example
-      type: docker-build
-      dockerfile: "rocro-yamllint.Dockerfile"
-      options:
-        --build-arg:
-          OUTDIR=/.reports
-      artifacts:
-        - from: yamllint-task
-          path: "/.reports/yamllint.issues"
-        - from: yamllint-task
-          path: "/.reports/yamllint.sarif"
-      reports:
-        - from: yamllint-task
-          path: "/.reports/yamllint.issues"
-          format:
-            type: example
-            path: rocro-tasks-examples/yamllint.issues
-      thresholds: {num-issues: 0}
-
-    - name: yamllint_SARIF
-      type: docker-build
-      dockerfile: "rocro-yamllint.Dockerfile"
-      options:
-        --build-arg:
-          OUTDIR=/.reports
-      artifacts:
-        - from: yamllint-task
-          path: "/.reports/yamllint.issues"
-        - from: yamllint-task
-          path: "/.reports/yamllint.sarif"
-      reports:
-        - from: yamllint-task
-          path: "/.reports/yamllint.sarif"
-          format:
-            type: SARIF
-      thresholds: {num-issues: 0}
-
   tools:
-
-    cpd:
-      thresholds: {num-issues: 31}
 
     errcheck:
       thresholds: {num-issues: 115}
-
-    fossology:
-      thresholds: {num-issues: 23}
 
     go-test:
       thresholds: {num-issues: 0}
@@ -100,42 +22,8 @@ inspecode:
     go-vet:
       thresholds: {num-issues: 4}
 
-    gofmt:
-      auto-fix: true
-      thresholds: {num-issues: 0}
-
-    goimports:
-      auto-fix: true
-      thresholds: {num-issues: 0}
-
-    golint:
-      ignore:
-        - 'internal/third_party/yaml/*.go'
-      auto-fix: true
-      thresholds: {num-issues: 405}
-
     gosec:
       thresholds: {num-issues: 74}
 
-    grep:
-      thresholds: {num-issues: 647}
-
-    ineffassign:
-      thresholds: {num-issues: 7}
-
-    jscpd:
-      thresholds: {num-issues: 63}
-
-    misspell:
-      auto-fix: true
-      thresholds: {num-issues: 7}
-
     staticcheck:
       thresholds: {num-issues: 291}
-
-    unused:
-      ignore:
-        - '**/*_test.go'
-        - 'internal/third_party/yaml/*.go'
-      options: [--single-occurrence]
-      thresholds: {num-issues: 36}
