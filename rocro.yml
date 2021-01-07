@@ -3,7 +3,7 @@ inspecode:
 
   global:
     runtime:
-      go: 1.13
+      go: 1.14
 
   experimental:
     env:
