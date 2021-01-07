@@ -1,3 +1,4 @@
+---
 inspecode:
 
   global:
@@ -56,7 +57,7 @@ inspecode:
           format:
             type: example
             path: rocro-tasks-examples/yamllint.issues
-      thresholds: {num-issues: 1}
+      thresholds: {num-issues: 0}
 
     - name: yamllint_SARIF
       type: docker-build
@@ -74,8 +75,7 @@ inspecode:
           path: "/.reports/yamllint.sarif"
           format:
             type: SARIF
-            path: README.md  # duumy ... no-needed when `type: SARIF`
-      thresholds: {num-issues: 1}
+      thresholds: {num-issues: 0}
 
   tools:
 
