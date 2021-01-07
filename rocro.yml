@@ -7,7 +7,7 @@ inspecode:
 
   experimental:
     env:
-      GO111MODULE: on
+      GO111MODULE: "on"
 
   tasks:
 
@@ -44,7 +44,7 @@ inspecode:
           path: "/.reports/hadolint.sarif"
           format:
             type: SARIF
-      thresholds: {num-issues: 12}
+      thresholds: {num-issues: 10}
 
     - name: yamllint_example
       type: docker-build
