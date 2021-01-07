@@ -3,11 +3,7 @@ inspecode:
 
   global:
     runtime:
-      go: 1.12
-
-  experimental:
-    env:
-      GO111MODULE: "on"
+      go: 1.15
 
   tasks:
 
