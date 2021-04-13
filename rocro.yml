@@ -22,7 +22,7 @@ inspecode:
         - from: dockerfilelint-task
           path: '/.reports/dockerfilelint.sarif'
           format: SARIF
-      thresholds: {num-issues: 2}
+      thresholds: {num-issues: 1}
 
     - name: hadolint
       type: docker-build
@@ -40,7 +40,7 @@ inspecode:
           path: '/.reports/hadolint.sarif'
           format:
             type: SARIF
-      thresholds: {num-issues: 10}
+      thresholds: {num-issues: 2}
 
     - name: yamllint_example
       type: docker-build
@@ -120,7 +120,7 @@ inspecode:
       thresholds: {num-issues: 7}
 
     jscpd:
-      thresholds: {num-issues: 63}
+      thresholds: {num-issues: 79}
 
     misspell:
       auto-fix: true
