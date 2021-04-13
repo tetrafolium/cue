@@ -7,7 +7,7 @@ inspecode:
 
     - name: dockerfilelint
       type: docker-build
-      dockerfile: "rocro-dockerfilelint.Dockerfile"
+      dockerfile: '.rocro/dockerfilelint/Dockerfile'
       options:
         --build-arg:
           OUTDIR=/.reports
@@ -24,7 +24,7 @@ inspecode:
 
     - name: hadolint
       type: docker-build
-      dockerfile: "rocro-hadolint.Dockerfile"
+      dockerfile: '.rocro/hadolint/Dockerfile'
       options:
         --build-arg:
           OUTDIR=/.reports
@@ -42,7 +42,7 @@ inspecode:
 
     - name: yamllint_example
       type: docker-build
-      dockerfile: "rocro-yamllint.Dockerfile"
+      dockerfile: '.rocro/yamllint/Dockerfile'
       options:
         --build-arg:
           OUTDIR=/.reports
@@ -56,12 +56,12 @@ inspecode:
           path: "/.reports/yamllint.issues"
           format:
             type: example
-            path: rocro-tasks-examples/yamllint.issues
+            path: '.rocro/yamllint/example.issues'
       thresholds: {num-issues: 0}
 
     - name: yamllint_SARIF
       type: docker-build
-      dockerfile: "rocro-yamllint.Dockerfile"
+      dockerfile: '.rocro/yamllint/Dockerfile'
       options:
         --build-arg:
           OUTDIR=/.reports
