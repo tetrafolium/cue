@@ -5,6 +5,10 @@ inspecode:
     runtime:
       go: 1.15
 
+  experimental:
+    env:
+      GO111MODULE: auto
+
   tasks:
 
     - name: dockerfilelint
@@ -16,9 +20,7 @@ inspecode:
       artifacts:
         uploads:
           - stage: linter-stage
-            path: '/.reports/dockerfilelint.json'
-          - stage: linter-stage
-            path: '/.reports/dockerfilelint.sarif'
+            path: '/.reports/'
       reports:
         - stage: linter-stage
           path: '/.reports/dockerfilelint.sarif'
@@ -34,9 +36,7 @@ inspecode:
       artifacts:
         uploads:
           - stage: linter-stage
-            path: '/.reports/hadolint.json'
-          - stage: linter-stage
-            path: '/.reports/hadolint.sarif'
+            path: '/.reports/'
       reports:
         - stage: linter-stage
           path: '/.reports/hadolint.sarif'
@@ -53,9 +53,7 @@ inspecode:
       artifacts:
         uploads:
           - stage: linter-stage
-            path: '/.reports/yamllint.issues'
-          - stage: linter-stage
-            path: '/.reports/yamllint.sarif'
+            path: '/.reports/'
       reports:
         - stage: linter-stage
           path: '/.reports/yamllint.issues'
@@ -73,9 +71,7 @@ inspecode:
       artifacts:
         uploads:
           - stage: linter-stage
-            path: '/.reports/yamllint.issues'
-          - stage: linter-stage
-            path: '/.reports/yamllint.sarif'
+            path: '/.reports/'
       reports:
         - stage: linter-stage
           path: '/.reports/yamllint.sarif'
