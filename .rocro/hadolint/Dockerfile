@@ -29,8 +29,8 @@ WORKDIR "${REPODIR}"
 ### Put symlink refers submodule-path at origin-path
 RUN ln -s "${REPODIR}/$(basename "${TOOLPATH}")" "${TOOLDIR}"
 
-RUN ls -ld "${TOOLDIR}/" && ls -lLa "${TOOLDIR}/"
-RUN ls -ld "${REPODIR}/inspecode-tasks/" && ls -la "${REPODIR}/inspecode-tasks/"
+RUN ( ls -ld "${REPODIR}/inspecode-tasks/" && ls -la "${REPODIR}/inspecode-tasks/" ) || true
+RUN ( ls -ld "${TOOLDIR}/" && ls -lLa "${TOOLDIR}/" ) || true
 
 ### Run hadolint ...
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
@@ -38,8 +38,8 @@ RUN ( find . -type f -name '*Dockerfile*' -print0 | xargs -0 hadolint --format j
         > "${OUTDIR}/hadolint.json" || true
 RUN ls -la "${OUTDIR}"
 
-RUN ls -ld "${TOOLDIR}/" && ls -lLa "${TOOLDIR}/"
-RUN ls -ld "${REPODIR}/inspecode-tasks/" && ls -la "${REPODIR}/inspecode-tasks/"
+RUN ( ls -ld "${REPODIR}/inspecode-tasks/" && ls -la "${REPODIR}/inspecode-tasks/" ) || true
+RUN ( ls -ld "${TOOLDIR}/" && ls -lLa "${TOOLDIR}/" ) || true
 
 ### Convert hadolint JSON to SARIF ...
 RUN go run "${TOOLDIR}/hadolint/cmd/main.go" "${REPOPATH}" \
