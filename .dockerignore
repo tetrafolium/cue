@@ -1,6 +1,10 @@
 *
 */
 
+# not ignore git submodules
+!.gitmodules
+!inspecode-tasks
+
 # not ignore go and cue files
 !cmd/
 !cue/
