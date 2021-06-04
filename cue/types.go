@@ -898,7 +898,7 @@ func (v Value) Syntax(opts ...Option) ast.Node {
 	if v.v == nil {
 		return nil
 	}
-	var o options = getOptions(opts)
+	var o = getOptions(opts)
 	// var inst *Instance
 
 	p := export.Profile{
