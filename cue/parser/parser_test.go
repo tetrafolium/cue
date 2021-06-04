@@ -372,7 +372,7 @@ func TestParse(t *testing.T) {
 		   `,
 		"<[l5// 4] a: <[l2// 3 +] <[l2// 2 +] 2+3>+4>>",
 	}, {
-		"composit comments",
+		"compost comments",
 		`a : {
 			a: 1, b: 2, c: 3, d: 4
 			// end
